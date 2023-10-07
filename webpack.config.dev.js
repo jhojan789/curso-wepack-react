@@ -11,7 +11,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
-  mode: 'production',
+  mode: 'development',
   resolve:{
     extensions: ['.js','.jsx'],
     alias:{
@@ -56,12 +56,11 @@ module.exports = {
     new CleanWebpackPlugin()
 
   ],
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new CssMinimizerWebpackPlugin(),
-      new TerserWebpackPlugin()
-    ]
-  }
+  devServer:{
+    static: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 3006,
+    
+  },
 
 }
